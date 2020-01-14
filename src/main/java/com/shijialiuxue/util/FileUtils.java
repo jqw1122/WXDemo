@@ -44,7 +44,7 @@ public class FileUtils {
             for (Cell cell : row) {
                 String temp = cell.getContents().trim();
                 if (isWord(temp)){
-                    lList.add(temp);
+                    lList.add(toLowerCase(temp));
                 }
             }
             list.add(lList);
@@ -171,16 +171,16 @@ public class FileUtils {
         if (str.length() == 0) {
             return;
         }
+        str = toLowerCase(str);
         str = str.replace("'s", "");
         str = str.replaceAll("[^a-zA-Z]", " ");
         String[] wordList = str.trim().split("\\s+");
-//        for (int i = 0; i < wordList.length; i++) {
-//            if (wordList[i].equals("")){
-//                System.out.println(str);
-//                break;
-//            }
-//        }
+
         allData.addAll(Arrays.asList(wordList));
     }
 
+
+    private static String toLowerCase(String str){
+        return str.toLowerCase();
+    }
 }
