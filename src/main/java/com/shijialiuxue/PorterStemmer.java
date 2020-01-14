@@ -37,7 +37,10 @@ package com.shijialiuxue;
 import com.shijialiuxue.util.FileUtils;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -548,30 +551,30 @@ class PorterStemmer {
         return null;
     }
 
-    //检查单词是不是已经存在在result这个priority queue里面
-    private static boolean checkResult(ArrayList<Node> result, String word, String stem) {
-        //如果这个词已经存在在result里面，则频率加一
-        for (Node node : result) {
-            for (NodeWord words : node.getWordList()) {
-                if (words.getWord().equals(word)) {
-                    words.increment();
-                    node.increment();
-//                    result.remove(node);
-//                    result.add(node);
-                    return true;
-                }
-            }
-            //如果这个词本身不存在，但是他的词根存在，那么词根频率加一，并且把这个词存在词根里
-            if (node.getStem().equals(stem)) {
-                node.getWordList().add(new NodeWord(word, 1));
-                node.increment();
-//                result.remove(node);
-//                result.add(node);
-                return true;
-            }
-        }
-        return false;
-    }
+//    //检查单词是不是已经存在在result这个priority queue里面
+//    private static boolean checkResult(ArrayList<Node> result, String word, String stem) {
+//        //如果这个词已经存在在result里面，则频率加一
+//        for (Node node : result) {
+//            for (NodeWord words : node.getWordList()) {
+//                if (words.getWord().equals(word)) {
+//                    words.increment();
+//                    node.increment();
+////                    result.remove(node);
+////                    result.add(node);
+//                    return true;
+//                }
+//            }
+//            //如果这个词本身不存在，但是他的词根存在，那么词根频率加一，并且把这个词存在词根里
+//            if (node.getStem().equals(stem)) {
+//                node.getWordList().add(new NodeWord(word, 1));
+//                node.increment();
+////                result.remove(node);
+////                result.add(node);
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     /**
      * 检查是否存在 在已经构建的list中
